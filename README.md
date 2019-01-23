@@ -92,22 +92,6 @@ files
 several compiled files
 * .gitconfig - Sets several global Git variables
 
-### Hammerspoon (hammerspoon/)
-* setup.sh - Symlinks all lua and AppleScript files to `~/.hammerspoon/`
-* init.lua - Contains the main Hammerspoon config, importing the others
-* caffeinate.lua - Shortcuts for managing screen state (locking, etc.)
-* hyper.lua - Binds the "F18" key to a Hyper mode, which can be used for
-global commands
-* minimising.lua - Shortcuts for minimising and unminimising windows
-* shortcuts.lua - Hyper key bindings to existing shortcuts
-* spectacle.lua - Window and monitor management using hyper mode
-* togglevpn.applescript - Toggles Viscosity vpn connection
-* togglevpn.lua - Binds a shortcut to the execution of `togglevpn.applescript`
-
-### Karabiner (karabiner/)
-* setup.sh - Symlinks Karabiner settings to `~/.config/karabiner`
-* karabiner.json - Binds the CAPS LOCK key to "F18" to use with hammerspoon
-
 ### macOS Preferences (macos/)
 * setup.sh - Executes a long list of commands pertaining to macOS Preferences
 
