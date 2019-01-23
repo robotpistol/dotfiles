@@ -1,0 +1,17 @@
+{
+  "draw_white_space": "all",
+  "ensure_newline_at_eof_on_save": true,
+  "font_size": 16,
+  "ignored_packages":
+  [
+    "Vintage"
+  ],
+  "rulers":
+  [
+    100
+  ],
+  "tab_size": 2,
+  "theme": "Material Monokai.sublime-theme",
+  "translate_tabs_to_spaces": true,
+  "trim_trailing_white_space_on_save": true
+}
