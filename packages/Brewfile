@@ -13,6 +13,7 @@ brew 'fish'
 brew 'git'
 brew 'glib'
 brew 'go'
+brew 'graphviz'
 brew 'hub'
 brew 'httpie'
 brew 'jq'
@@ -27,7 +28,9 @@ brew 'pipenv'
 brew 'postgresql'
 brew 'sqlite'
 brew 'ssh-copy-id'
+brew 'tmux'
 brew 'vcprompt'
+brew 'watch'
 brew 'wget'
 
 cask 'alfred'
@@ -56,3 +59,4 @@ cask 'vlc'
 mas 'Amphetamine', id: 937984704
 mas '1Password', id: 1333542190
 mas 'Magnet', id: 441258766
+mas 'Clocks', id: 414554506

@@ -8,7 +8,11 @@
   cmd = opendiff \"$LOCAL\" \"$REMOTE\"
   path =
 [push]
-  default = simple
+  default = current
+[merge]
+  tool = smerge
+[mergetool "smerge"]
+  cmd = smerge
 [alias]
   unstage = reset HEAD --
   uncommit = reset --soft HEAD~
