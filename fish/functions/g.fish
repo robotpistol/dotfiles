@@ -4,9 +4,19 @@
 function g
   set repo_root ~/src
   set github_uri github.com
+
   # default org and repo values
-  set org veyond-card
-  set repo credit_card
+  # run `set -Ux DOTFILES_ORG_NAME <org_name>` to change default
+  if set -q $DOTFILES_ORG_NAME
+    set org $DOTFILES_ORG_NAME
+  else
+    set org veyond-card
+  end
+
+  # run `set -Ux DOTFILES_REPO_NAME <org_name>` to change default
+  if set -q $DOTFILES_REPO_NAME
+    set repo $DOTFILES_REPO_NAME
+  end
 
   # If handle parameters
   if set -q argv[1]
@@ -15,7 +25,6 @@ function g
 
     # if there's only 1 item, then it's assumed to be the repo fill in a smart default
     if test (count $parts) = 1
-      set org veyond-card
       set repo $parts[1]
     else # otherwise use the first 2 parts
       set org $parts[1]

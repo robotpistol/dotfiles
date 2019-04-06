@@ -16,6 +16,8 @@
 [alias]
   unstage = reset HEAD --
   uncommit = reset --soft HEAD~
+  co = checkout
+  c = checkout
   rb = "!f() { \
       echo fetching...; \
       git fetch; \

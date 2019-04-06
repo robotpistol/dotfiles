@@ -1,4 +1,4 @@
-#! /usr/bin/env bash
+#! /usr/an/env bash
 
 # Taken from:
 # ~/.osx — https://mths.be/osx
@@ -18,9 +18,9 @@ sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 # Set computer name
-# sudo scutil --set ComputerName rmbp
-# sudo scutil --set LocalHostName rmbp
-# sudo scutil --set HostName rmbp
+# sudo scutil --set ComputerName robotpistol
+# sudo scutil --set LocalHostName robotpistol
+# sudo scutil --set HostName robotpistol
 
 ###############################################################################
 # General UI/UX                                                               #
@@ -48,6 +48,10 @@ defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
 # Expand print panel by default
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
+
+# Mute alert sounds
+defaults write com.apple.sound.beep.volume -int 0
+defaults write NSGlobalDomain com.apple.sound.beep.volume -int 0
 
 # Save to disk (not to iCloud) by default
 # defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
@@ -91,17 +95,18 @@ defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 
 COMPUTER_UUID=`ioreg -rd1 -c IOPlatformExpertDevice | grep -E '(UUID)' | awk '{print $3}' | tr -d \"`
 
-# ioreg -c AppleEmbeddedKeyboard -r -d 1 -k VendorID -k ProductID -a | plutil -convert json -o - - | jq -r '.[] | [ .Product, .VendorID, .ProductID ]'
 # Disable capslock and replace it with control on Internal Keyboard
-# defaults write ~/Library/Preferences/ByHost/.GlobalPreferences.$COMPUTER_UUID \
-#   com.apple.keyboard.modifiermapping.1452-636-0 \
-#   '( { HIDKeyboardModifierMappingDst = 2;   HIDKeyboardModifierMappingSrc = 0; } )'
+defaults write ~/Library/Preferences/ByHost/.GlobalPreferences.$COMPUTER_UUID \
+  com.apple.keyboard.modifiermapping.1452-636-0 \
+  '( { HIDKeyboardModifierMappingDst = 2;   HIDKeyboardModifierMappingSrc = 0; } )'
 
-# Configure Microsoft Natural Keyboard
-# ioreg -c Natural -r -d 1 -k VendorID -k ProductID -a | plutil -convert json -o - - | jq -r '.[] | [ .Product, .VendorID, .ProductID ]'
-# defaults write ~/Library/Preferences/ByHost/.GlobalPreferences.$COMPUTER_UUID \
-#   com.apple.keyboard.modifiermapping.1118-219 \
-#   '( { HIDKeyboardModifierMappingDst = 2;   HIDKeyboardModifierMappingSrc = 0; } )'
+# Disable capslock and replace it with control on Internal Keyboard for Microsoft Natural Keyboard
+# Also swap control and command.
+defaults write ~/Library/Preferences/ByHost/.GlobalPreferences.$COMPUTER_UUID \
+  com.apple.keyboard.modifiermapping.1118-219-0 \
+  '( { HIDKeyboardModifierMappingDst = 2; HIDKeyboardModifierMappingSrc = 0; }, \
+     { HIDKeyboardModifierMappingDst = 4; HIDKeyboardModifierMappingSrc = 3; }, \
+     { HIDKeyboardModifierMappingDst = 3; HIDKeyboardModifierMappingSrc = 4; },)'
 
 # Trackpad: enable tap to click for this user and for the login screen
 # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
@@ -249,8 +254,12 @@ defaults write com.apple.finder OpenWindowForNewRemovableDisk -bool true
 # /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:iconSize 80" ~/Library/Preferences/com.apple.finder.plist
 
 # Use column view in all Finder windows by default
-# Four-letter codes for the other view modes: `icnv`, `clmv`, `Flwv`
-defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
+# Four-letter codes for the other view modes:
+# Flwv ▸ Cover Flow View
+# Nlsv ▸ List View
+# clmv ▸ Column View
+# icnv ▸ Icon View
+defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 
 # Disable the warning before emptying the Trash
 # defaults write com.apple.finder WarnOnEmptyTrash -bool false
@@ -264,9 +273,9 @@ chflags nohidden ~/Library
 # Expand the following File Info panes:
 # “General”, “Open with”, and “Sharing & Permissions”
 defaults write com.apple.finder FXInfoPanesExpanded -dict \
-    General -bool true \
-    OpenWith -bool true \
-    Privileges -bool true
+  General -bool true \
+  OpenWith -bool true \
+  Privileges -bool true
 
 ###############################################################################
 # Dock, Dashboard, and hot corners                                            #
@@ -440,4 +449,4 @@ defaults write com.google.Chrome.canary DisablePrintPreview -bool true
 defaults write com.google.Chrome PMPrintingExpandedStateForPrint2 -bool true
 defaults write com.google.Chrome.canary PMPrintingExpandedStateForPrint2 -bool true
 
-success "FInished setting macOS defaults. Note that some of these changes require a logout/restart to take effect."
+success "Finished setting macOS defaults. Note that some of these changes require a logout/restart to take effect."
