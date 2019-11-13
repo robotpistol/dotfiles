@@ -10,7 +10,7 @@ function g
   if set -q $DOTFILES_ORG_NAME
     set org $DOTFILES_ORG_NAME
   else
-    set org veyond-card
+    set org robotpistol
   end
 
   # run `set -Ux DOTFILES_REPO_NAME <org_name>` to change default
