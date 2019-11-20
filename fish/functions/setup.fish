@@ -4,10 +4,10 @@ function setup
     abbr -e $abbreviation
   end
   abbr mci mvn clean install
-  abbr g git
+  # abbr g git
   abbr gf git fetch
   abbr gs git status
-  abbr gc git commit -m
+  # abbr gc git commit -m
   abbr gm git merge FETCH_HEAD --ff-only
   abbr gr git rb FETCH_HEAD
   abbr ga git add

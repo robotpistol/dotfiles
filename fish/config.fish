@@ -24,7 +24,7 @@ set -x -g PATH ~/.composer/vendor/bin $PATH
 eval (pipenv --completion)
 
 # rbenv
-status --is-interactive; and source (rbenv init -|psub)
+# status --is-interactive; and source (rbenv init -|psub)
 
 if not functions -q fisher
   set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config

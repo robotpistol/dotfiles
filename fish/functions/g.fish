@@ -7,14 +7,15 @@ function g
 
   # default org and repo values
   # run `set -Ux DOTFILES_ORG_NAME <org_name>` to change default
-  if set -q $DOTFILES_ORG_NAME
+  if set -q DOTFILES_ORG_NAME
     set org $DOTFILES_ORG_NAME
   else
+    echo "using default org"
     set org robotpistol
   end
 
   # run `set -Ux DOTFILES_REPO_NAME <org_name>` to change default
-  if set -q $DOTFILES_REPO_NAME
+  if set -q DOTFILES_REPO_NAME
     set repo $DOTFILES_REPO_NAME
   end
 

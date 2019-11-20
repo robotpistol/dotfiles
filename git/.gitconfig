@@ -1,6 +1,6 @@
 [user]
   name = Allen Kerr
-  email = alkerr@gmail.com
+  email = akerr@chime.com
 [core]
   excludesfile = ~/.gitignore_global
   editor = /usr/bin/vim
