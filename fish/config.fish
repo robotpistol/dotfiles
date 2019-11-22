@@ -19,12 +19,17 @@ set -x -g PATH ~/bin $PATH /usr/local/sbin
 # Composer
 set -x -g PATH ~/.composer/vendor/bin $PATH
 
+#bobthefish config
+set -g fish_prompt_pwd_dir_length 0
+set -g theme_newline_cursor yes 0
+set -g theme_display_cmd_duration yes
+
 # Pipenv completions
 # add fisherman/pipenv to fishfile
 eval (pipenv --completion)
 
 # rbenv
-# status --is-interactive; and source (rbenv init -|psub)
+status --is-interactive; and source (rbenv init -|psub)
 
 if not functions -q fisher
   set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
