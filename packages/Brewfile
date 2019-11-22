@@ -4,7 +4,6 @@ tap 'homebrew/cask-fonts'
 
 brew 'brew-cask-completion'
 brew 'composer'
-brew 'coreutils'
 brew 'duti'
 brew 'elixir'
 brew 'fish'
@@ -51,6 +50,7 @@ cask 'sublime-text'
 cask 'the-unarchiver'
 cask 'visual-studio-code'
 cask 'vlc'
+cask 'clear'
 
 mas 'Amphetamine', id: 937984704
 mas '1Password', id: 1333542190

@@ -21,7 +21,7 @@ set -x -g PATH ~/.composer/vendor/bin $PATH
 
 #bobthefish config
 set -g fish_prompt_pwd_dir_length 0
-set -g theme_newline_cursor yes 0
+set -g theme_newline_cursor yes
 set -g theme_display_cmd_duration yes
 
 # Pipenv completions
