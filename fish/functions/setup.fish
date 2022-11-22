@@ -12,6 +12,7 @@ function setup
   abbr gr git rb FETCH_HEAD
   abbr ga git add
   abbr gp git push
+  abbr k kubectl
   abbr gd git diff
   abbr gco git checkout
   abbr ll ls -lhA
