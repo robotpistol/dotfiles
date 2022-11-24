@@ -1,7 +1,7 @@
 [user]
   name = Allen Kerr
   email = akerr@chime.com
-  signingkey = 48CE54A7185872D8
+  signingkey = C7C2D934695E5BB1
 [core]
   excludesfile = ~/.gitignore_global
   editor = /usr/bin/vim
@@ -59,10 +59,10 @@
   program = gpg
 [filter "lfs"]
 	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
+	smudge = git-lfs smudge -- gp%f
 	process = git-lfs filter-process
 	required = true
-[url "https://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@github.com/"]
-	insteadOf = https://github.com/
-[url "https://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@github.com/"]
+[init]
+	defaultBranch = main
+[url "git@github.com:"]
 	insteadOf = https://github.com/

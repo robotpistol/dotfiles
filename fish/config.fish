@@ -5,6 +5,8 @@ set -x -g TERM xterm-256color
 set -x -g LC_ALL en_GB.UTF-8
 set -x -g LANG en_GB.UTF-8
 
+eval $(/opt/homebrew/bin/brew shellenv)
+
 # Coreutils bin and man folders
 set -x -g PATH (brew --prefix coreutils)/libexec/gnubin $PATH
 # set -x -g MANPATH (brew --prefix coreutils)/libexec/gnuman $MANPATH
@@ -28,10 +30,12 @@ set -x -g PATH ~/vendor/apache-maven-3.6.0/bin $PATH
 set -x -g GOPATH $HOME/go
 
 # Add go binaries to path
-set -x -g PATH $GOPATH $PATH
+set -x -g PATH $GOPATH/ $PATH
+set -x -g PATH $GOPATH/bin $PATH
 
 #bobthefish config
 set -g fish_prompt_pwd_dir_length 0
+
 set -g theme_display_cmd_duration yes
 set -g theme_display_docker_machine no
 set -g theme_nerd_fonts yes
@@ -40,19 +44,13 @@ set -g theme_newline_cursor yes
 # rbenv
 status --is-interactive; and source (rbenv init -|psub)
 
-if not functions -q fisher
-    set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
-    curl https://git.io/fisher --create-dirs -sLo $XDG_CONFIG_HOME/fish/functions/fisher.fish
-    fish -c fisher
-end
+# if not functions -q fisher
+#     set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
+#     curl https://git.io/fisher --create-dirs -sLo $XDG_CONFIG_HOME/fish/functions/fisher.fish
+#     fish -c fisher
+# end
 
 set -g fish_user_paths "~/.tfenv/bin" $fish_user_paths
-
-# Created by `pipx` on 2021-04-28 23:41:05
-set PATH $PATH /Users/akerr/.local/bin
-
-# Created by `pipx` on 2021-04-28 23:41:05
-set PATH $PATH /Users/akerr/go/bin
 
 # Pyenv Init
 pyenv init - | source

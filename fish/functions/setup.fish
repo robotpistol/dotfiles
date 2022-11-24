@@ -17,5 +17,4 @@ function setup
   abbr gco git checkout
   abbr ll ls -lhA
   abbr bs brew services
-  fisher
 end

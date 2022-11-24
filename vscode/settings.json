@@ -91,5 +91,6 @@
   "editor.unicodeHighlight.invisibleCharacters": false,
 "editor.unicodeHighlight.ambiguousCharacters": false,
 "window.zoomLevel": -1,
-"workbench.colorTheme": "One Monokai"
+"workbench.colorTheme": "One Monokai",
+"security.workspace.trust.untrustedFiles": "open"
 }
