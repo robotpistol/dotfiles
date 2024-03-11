@@ -1,0 +1,14 @@
+
+export openSelectedJiraTicket = () ->
+  selectedText = hs.uielement.focusedElement!\selectedText!
+  return if selectedText == nil
+  selectedText = selectedText
+    |> string.gsub("%[", "")
+    |> string.gsub("%]", "")
+    |> string.gsub("s%", "")
+    |> string.upper!
+  return if selectedText\match("^[A-Z]+-[0-9]+") == nil
+  os.execute("open https://chime.atlassian.net/browse/#{selectedText}")
+
+export openJira = () ->
+  os.execute("open https://chime.atlassian.net/jira/software/c/projects/FINPLAT/boards/502")
