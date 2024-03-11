@@ -33,6 +33,8 @@ set -x -g GOPATH $HOME/go
 set -x -g PATH $GOPATH/ $PATH
 set -x -g PATH $GOPATH/bin $PATH
 
+set -x -g PATH "~/.tfenv/bin" $PATH
+
 #bobthefish config
 set -g fish_prompt_pwd_dir_length 0
 
@@ -61,3 +63,6 @@ pyenv init - | source
 # <<< conda initialize <<<
 
 # direnv hook fish | source
+
+set -q KREW_ROOT; and set -gx PATH $PATH $KREW_ROOT/.krew/bin; or set -gx PATH $PATH $HOME/.krew/bin
+kubectl-shell_ctx hook fish | source
