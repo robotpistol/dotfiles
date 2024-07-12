@@ -10,6 +10,7 @@
   path =
 [push]
   default = current
+  autoSetupRemote = true
 [merge]
   tool = smerge
 [mergetool "smerge"]
