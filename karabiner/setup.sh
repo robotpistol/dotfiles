@@ -2,8 +2,9 @@
 
 DIR=$(dirname "$0")
 cd "$DIR"
-
 . ../scripts/functions.sh
+
+mkdir -p ~/.config/karabiner
 
 SOURCE="$(realpath .)"
 DESTINATION="$(realpath ~/.config/karabiner)"

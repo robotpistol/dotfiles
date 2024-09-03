@@ -1,7 +1,6 @@
 [user]
   name = Allen Kerr
-  email = akerr@chime.com
-  signingkey = C7C2D934695E5BB1
+  email = alkerr@gmail.com
 [core]
   excludesfile = ~/.gitignore_global
   editor = /usr/bin/vim
@@ -53,7 +52,7 @@
   }; f"
   pull = pull --ff-only
 [commit]
-  gpgsign = true
+  gpgsign = false
 [pull]
   rebase = false
 [gpg]

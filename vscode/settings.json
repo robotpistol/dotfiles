@@ -39,7 +39,6 @@
   "editor.fontSize": 15,
   "editor.tabSize": 2,
   "editor.formatOnPaste": true,
-  "editor.multiCursorModifier": "ctrlCmd",
   "editor.snippetSuggestions": "top",
   "editor.detectIndentation": false,
   "editor.insertSpaces": true,
@@ -50,7 +49,7 @@
     "editor.insertSpaces": false,
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
-      "source.organizeImports": true
+      "source.organizeImports": "explicit"
     }
   },
   "[terraform]": {
@@ -92,16 +91,6 @@
 "editor.unicodeHighlight.ambiguousCharacters": false,
 "workbench.colorTheme": "One Monokai",
 "security.workspace.trust.untrustedFiles": "open",
-"audioCues.lineHasError": "off",
-"audioCues.lineHasBreakpoint": "off",
-"audioCues.lineHasFoldedArea": "off",
-"audioCues.volume": 0,
-"audioCues.lineHasInlineSuggestion": "off",
-"audioCues.noInlayHints": "off",
-"audioCues.onDebugBreak": "off",
-"audioCues.taskCompleted": "off",
-"audioCues.taskFailed": "off",
-"audioCues.terminalQuickFix": "off",
 "redhat.telemetry.enabled": true,
 "haskell.manageHLS": "PATH",
 "editor.suggestOnTriggerCharacters": false,
@@ -171,5 +160,33 @@
 },
 "code-runner.fileDirectoryAsCwd": true,
 "editor.inlineSuggest.enabled": true,
-"circleci.hostUrl": ""
+"circleci.hostUrl": "",
+"accessibility.signals.lineHasError": {
+  "sound": "off"
+},
+"accessibility.signals.lineHasFoldedArea": {
+  "sound": "off"
+},
+"accessibility.signals.lineHasBreakpoint": {
+  "sound": "off"
+},
+"accessibility.signals.lineHasInlineSuggestion": {
+  "sound": "off"
+},
+"accessibility.signals.terminalQuickFix": {
+  "sound": "off"
+},
+"accessibility.signals.onDebugBreak": {
+  "sound": "off"
+},
+"accessibility.signals.noInlayHints": {
+  "sound": "off"
+},
+"accessibility.signals.taskCompleted": {
+  "sound": "off"
+},
+"accessibility.signals.taskFailed": {
+  "sound": "off"
+},
+"editor.multiCursorModifier": "ctrlCmd"
 }

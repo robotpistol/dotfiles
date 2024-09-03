@@ -1,17 +1,20 @@
--- -*- dash-at-point-docset: "hammerspoon,lua" -*-
-local lVer = _VERSION:match("Lua (.+)$")
--- specify luarockt path yourself if this doesn't find it in the normal places
-local luarocks = "/opt/homebrew/bin/luarocks"
-if #luarocks > 0 then
-    package.path = package.path .. ";" .. hs.execute(
-            luarocks .. " --lua-version " .. lVer .. " path --lr-path"
-        ):gsub("\n", "")
-    package.cpath = package.cpath .. ";" .. hs.execute(
-            luarocks .. " --lua-version " .. lVer .. " path --lr-cpath"
-        ):gsub("\n", "")
+initialize = function()
+  require 'config'
+  require 'reloader'
+  require 'spoons'
+  require 'logger'
+  loadSpoons({
+    "ModalMgr",
+    "WindowHalfsAndThirds",
+  })
+
+  require 'index'
 end
 
-
-
--- Bootstrap yuscript index
-require('yue')('index')
+status, err = pcall(initialize)
+if err then
+  hs.alert.show("ERROR reloading config")
+  print(err)
+else
+  hs.alert.show("Hammerspoon Configuration reloaded")
+end
