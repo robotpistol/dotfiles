@@ -1,7 +1,6 @@
 hyper = {"cmd", "alt", "ctrl", "shift"}
 require 'actions'
 
-
 focusAppFn = function(appNameOrID)
   return function()
     focusApp(appNameOrID)
@@ -21,22 +20,42 @@ Modal = function(modalName, key, spec)
   spoon.ModalMgr:new(modalName)
 
   local modal = spoon.ModalMgr.modal_list[modalName]
+  modal.name = modalName
+  modal.active = false
 
-  modal:bind('', 'escape', 'Deactivate appM', function() spoon.ModalMgr:deactivate({modalName}) end)
-  modal:bind('', 'Q', 'Deactivate appM', function() spoon.ModalMgr:deactivate({modalName}) end)
+  modal.enterHyper = function()
+    if not modal.active then
+      spoon.ModalMgr:activate({modal.name}, "#FFBD2E", true)
+      modal.timer = hs.timer.delayed.new(5, function() exitHyper(modal, "timer") end)
+      modal.timer.start()
+      modal.active = true
+      tprint("set to active")
+    end
+  end
+
+  modal.exitHyper = function(method)
+    tprint("closing", modal.name, modal.active, method, timer)
+    if modal.active then
+      spoon.ModalMgr:deactivate({modal.name})
+      modal.active = false
+      modal.timer.stop()
+    else
+      tprint(modal.name, "already closed!")
+    end
+  end
+
+  modal:bind('', 'escape', 'Deactivate appM', function() modal.exitHyper() end)
+  modal:bind('', 'Q', 'Deactivate appM', function() modal.exitHyper() end)
   modal:bind('', 'tab', 'Toggle Cheatsheet', function() spoon.ModalMgr:toggleCheatsheet() end)
 
   for _, spec in pairs(spec) do
     modal:bind('', spec.key, spec.message, function()
-      spoon.ModalMgr:deactivate(modalName)
+      modal.exitHyper()
       spec.fn()
     end)
   end
 
-  hs.hotkey.bind(hyper, key, function()
-    spoon.ModalMgr:activate({modalName}, "#FFBD2E", true)
-    hs.timer.delayed.new(5, function() spoon.ModalMgr:deactivate({modalName}) end).start()
-  end)
+  hs.hotkey.bind(hyper, key, function() modal.enterHyper() end)
   return modal
 end
 
@@ -51,4 +70,3 @@ Hyper = function(mod, spec)
     end
   end
 end
-
