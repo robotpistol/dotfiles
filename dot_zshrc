@@ -45,6 +45,7 @@ alias k='kubectl'
 alias krew=' kubectl krew'
 alias lg='lazygit'
 alias gp='git push'
+alias gp='git pull rebase'
 
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
