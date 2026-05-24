@@ -1,0 +1,5 @@
+ecr-login() {
+    AWS_REGION=us-east-1
+    ECR_REGISTRY=populate-me
+    aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $ECR_REGISTRY
+}

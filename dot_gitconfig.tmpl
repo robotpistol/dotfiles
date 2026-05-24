@@ -1,8 +1,11 @@
 [user]
   name = Allen Kerr
-  email = alkerr@gmail.com
+  {{ if eq .machine_type "work" -}}
+      email = allen@work.com
+  {{ else -}}
+      email = alkerr@gmail.com
+  {{ end -}}
   signingkey = {{ onepasswordRead "op://Private/SSH Key/public key" }}
-
 
 [core]
   excludesfile = ~/.gitignore_global

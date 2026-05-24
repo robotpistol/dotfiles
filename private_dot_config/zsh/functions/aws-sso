@@ -1,0 +1,21 @@
+aws-sso() {
+    local script_output
+    local profile=$1
+    if [ -z "$profile" ]; then
+        profile=$(aws configure list-profiles | fzf --prompt="Select AWS profile: ")
+    fi
+
+    if [ -z "$profile" ]; then
+        echo "No profile selected"
+        return 1
+    fi
+
+    script_output=$(aws sso login --profile $profile >/dev/null 2>&1 && aws configure export-credentials --profile $profile --format env)
+    if [[ $? -eq 0 ]]; then
+        eval "$script_output"
+        echo "AWS SSO credentials exported for profile: $profile"
+    else
+        echo "Failed to get AWS SSO credentials for profile: $profile" >&2
+        return 1
+    fi
+}

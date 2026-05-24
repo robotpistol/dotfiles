@@ -42,7 +42,11 @@ alias ls='ls -G'
 alias lsa='ls -lah'
 alias tf='terraform'
 alias k='kubectl'
+alias krew=' kubectl krew'
 alias lg='lazygit'
+alias gp='git push'
+
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)

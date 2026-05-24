@@ -1,0 +1,28 @@
+#compdef g
+
+
+_g() {
+  zstyle ':completion:*:g:*' menu yes select
+
+  # Zsh completion script for g
+
+  local state
+  local -a orgs repos repos_in_org
+
+  _arguments -C \
+    '1: :->first_arg' \
+    '2: :->second_arg'
+
+  case "$state" in
+    first_arg)
+      # Suggestions for the first argument can be orgs or org/repo
+      orgs=(${(f)"$(find "$HOME/src" -mindepth 1 -maxdepth 1 -type d 2>/dev/null | sed "s#^$HOME/src/##")"})
+      repos=(${(f)"$(find "$HOME/src" -mindepth 2 -maxdepth 2 -type d 2>/dev/null | sed "s#^$HOME/src/##")"})
+      _alternative \
+        "orgs:organizations:($orgs)" \
+        "repos:repositories:($repos)"
+      ;;
+  esac
+}
+
+

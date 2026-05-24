@@ -1,0 +1,12 @@
+#!/bin/bash
+
+{{ if eq .chezmoi.os "darwin" -}}
+
+# Krew plugins hash: {{ include "dot_krew_plugins" | sha256sum }}
+
+# Install krew plugins
+while IFS= read -r plugin; do
+  kubectl krew install "$plugin" 2>/dev/null || true
+done < {{ joinPath .chezmoi.homeDir ".krew_plugins" }}
+
+{{ end -}}

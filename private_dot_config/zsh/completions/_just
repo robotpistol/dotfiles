@@ -1,0 +1,17 @@
+#compdef g
+
+
+_just() {
+  local -a commands
+  commands=($(just --list))
+  _describe 'commands' commands
+}
+
+_just "$@"
+
+
+if [ "$funcstack[1]" = "_just" ]; then
+    _just "$@"
+else
+    compdef _just just
+fi

@@ -1,0 +1,44 @@
+#!/usr/bin/env zsh
+
+# Usage: g [<org>] <repo>
+
+g() {
+	local ORG REPO TARGET_DIR
+	if [ "$#" -eq 0 ]; then
+		ORG=$(ls ~/src/ | gum filter --header "Select an organization")
+		REPO=$(ls ~/src/$ORG/ | gum filter --header "Select a repository")
+		TARGET_DIR="$HOME/src/$ORG/$REPO"
+		cd "$TARGET_DIR"
+		return 0
+	fi
+
+	if [[ "$1" == */* ]]; then
+		ORG="${1%/*}"
+		REPO="${1#*/}"
+	elif [ "$#" -eq 1 ]; then
+		ORG="robotpistol"
+		REPO="$1"
+	elif [ "$#" -eq 2 ]; then
+		ORG="$1"
+		REPO="$2"
+	else
+		echo "Usage: g [<org>] <repo>"
+		return 1
+	fi
+
+
+	TARGET_DIR="$HOME/src/$ORG/$REPO"
+
+	if [ -d "$TARGET_DIR/.git" ]; then
+		echo "Directory $TARGET_DIR exists. Navigating there."
+	else
+		echo "Cloning https://github.com/$ORG/$REPO.git to $TARGET_DIR"
+		mkdir -p "$HOME/src/$ORG"
+		if ! git clone "https://github.com/$ORG/$REPO.git" "$TARGET_DIR"; then
+			echo "Failed to clone repository." >&2
+			return 1
+		fi
+	fi
+
+	cd "$TARGET_DIR"
+}

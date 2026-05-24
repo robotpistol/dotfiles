@@ -1,0 +1,9 @@
+#compdef aws-sso
+
+_aws-sso() {
+  local -a profiles
+  profiles=(${(f)"$(aws configure list-profiles 2>/dev/null)"})
+  _describe 'AWS profile' profiles
+}
+
+_aws-sso "$@"
