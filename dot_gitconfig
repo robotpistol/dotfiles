@@ -1,6 +1,7 @@
 [user]
   name = Allen Kerr
   email = alkerr@gmail.com
+  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPSTPe8Hn4FIF5/i8/4+IcWn6bQ8gAMQWDp26FBeIHaj
 
 [core]
   excludesfile = ~/.gitignore_global
@@ -66,3 +67,9 @@
 [giteup]
 	base-path = /Users/allen_kerr/src
 	github-user = robotpistol
+[gpg]
+  format = ssh
+[gpg "ssh"]
+  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+[commit]
+  gpgsign = true
