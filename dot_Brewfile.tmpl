@@ -45,7 +45,6 @@ brew "container"
 brew "kubernetes-cli"
 brew "kubectx"
 brew "krew"
-brew "tailscale"
 
 # Data & databases
 brew "jq"
@@ -89,3 +88,23 @@ cask "hammerspoon"
 cask "karabiner-elements"
 cask "visual-studio-code"
 cask "vlc"
+
+# ============================================================
+# Mac Store
+# ============================================================mas "Tailscale", id: 1475387142
+mas "Amphetamine", id: 937984704      # keep awake
+mas "Hidden Bar", id: 1452453066      # menu bar cleanup
+mas "Tailscale", id: 1475387142       # already have CLI in brew too
+mas "Clocks", id: 414554506
+
+{{ if eq .machine_type "work" -}}
+mas "Slack", id: 803453959
+{{ else -}}
+mas "djay Pro", id: 450527929
+mas "Developer", id: 640199958
+mas "Moofin", id: 6761283970
+mas "TestFlight", id: 899247664
+mas "Xcode", id: 497799835
+
+
+{{ end -}}
