@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "WebFetch(domain:www.chezmoi.io)"
+      "WebFetch(domain:www.chezmoi.io)",
+      "Bash(git -C /Users/allen_kerr/.local/share/chezmoi show e30c7bb --stat)"
     ]
   }
 }

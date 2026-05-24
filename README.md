@@ -30,7 +30,7 @@ chezmoi manages dotfiles from a source directory (`~/.local/share/chezmoi/`) and
 | Karabiner | `dot_config/karabiner/` |
 | Ghostty | `dot_config/ghostty/` |
 | Starship | `dot_config/starship.toml` |
-| Brewfile | `dot_Brewfile` |
+| Packages | `.chezmoidata/packages.yaml` |
 
 ### Run Scripts
 
@@ -80,16 +80,11 @@ chezmoi update
 
 ### Managing Brew Packages
 
+Packages are defined in `.chezmoidata/packages.yaml` under `brews`, `casks`, and `mas` keys. The install script reads this file via chezmoi templates and runs `brew bundle` inline.
+
 ```bash
-# Installed something new? Capture it
-brew bundle dump --file=~/.Brewfile --force
-chezmoi re-add ~/.Brewfile
-
-# Find packages installed but not in Brewfile
-brew bundle cleanup --file=~/.Brewfile
-
-# Add something deliberately
-chezmoi edit ~/.Brewfile
+# Add or remove a package
+chezmoi edit ~/.local/share/chezmoi/.chezmoidata/packages.yaml
 chezmoi apply
 ```
 
