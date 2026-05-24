@@ -1,0 +1,82 @@
+packages:
+  brews:
+    - atuin
+    - bat
+    - btop
+    - buf
+    - chezmoi
+    - cmake
+    - container
+    - coreutils
+    - curl
+    - duti
+    - ffmpeg
+    - fzf
+    - gh
+    - git
+    - gnupg
+    - go
+    - gum
+    - httpie
+    - jless
+    - jq
+    - krew
+    - kubernetes-cli
+    - kubectx
+    - lazygit
+    - lua-language-server
+    - mas
+    - ncdu
+    - node
+    - python@3.14
+    - rbenv
+    - ruby
+    - ruby-build
+    - sd
+    - sqlite
+    - ssh-copy-id
+    - starship
+    - telnet
+    - the_silver_searcher
+    - thefuck
+    - tmux
+    - uv
+    - vivid
+    - watch
+    - wget
+    - yq
+    - zoxide
+    - zsh-autocomplete
+    - zsh-autosuggestions
+
+  casks:
+    - 1password
+    - 1password-cli
+    - alfred
+    - claude
+    - container
+    - discord
+    - docker-desktop
+    - ghostty
+    - hammerspoon
+    - karabiner-elements
+    - visual-studio-code
+    - vlc
+
+  mas:
+    - { name: "Amphetamine", id: 937984704 }   # keep awake
+    - { name: "Clocks", id: 414554506 }
+    - { name: "Hidden Bar", id: 1452453066 }   # menu bar cleanup
+    - { name: "Tailscale", id: 1475387142 }    # already have CLI in brew too
+
+  work:
+    mas:
+      - { name: "Slack", id: 803453959 }
+
+  personal:
+    mas:
+      - { name: "Developer", id: 640199958 }
+      - { name: "djay Pro", id: 450527929 }
+      - { name: "Moofin", id: 6761283970 }
+      - { name: "TestFlight", id: 899247664 }
+      - { name: "Xcode", id: 497799835 }

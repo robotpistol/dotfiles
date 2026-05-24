@@ -5,17 +5,10 @@ Personal dotfiles managed with [chezmoi](https://www.chezmoi.io/).
 ## Fresh Mac Setup
 
 ```bash
-bash <(curl -s https://raw.githubusercontent.com/USERNAME/dotfiles/main/bootstrap.sh)
+sh -c "$(curl -fsLS get.chezmoi.io)" && chezmoi init --apply robotpistol
 ```
 
-This will:
-
-1. Install Xcode CLI tools
-2. Install Homebrew
-3. Install 1Password (pauses for sign-in and SSH agent setup)
-4. Install chezmoi and apply all dotfiles
-
-When prompted, enter `personal` or `work` for machine type.
+When prompted, enter `personal` or `work` for machine type. chezmoi will automatically install Xcode CLI tools, Homebrew, and 1Password before applying dotfiles. You'll be prompted to sign in to 1Password and enable the SSH agent during setup.
 
 ### Post-setup manual steps
 
@@ -45,10 +38,11 @@ Scripts run in alphabetical order after attribute prefixes are stripped.
 
 | Script | Type | Purpose |
 |---|---|---|
-| `run_onchange_00-xcode-cli.sh.tmpl` | on change | Installs Xcode CLI tools |
-| `run_onchange_01-brew-bundle.sh.tmpl` | on change | Installs Homebrew packages, casks, and App Store apps |
+| `.install-prerequisites.sh` | init hook | Installs Xcode CLI, Homebrew, and 1Password before source state is read |
+| `run_onchange_00-xcode-cli.sh.tmpl` | on change | Ensures Xcode CLI tools are present |
+| `run_onchange_01-install-packages.sh.tmpl` | on change | Installs Homebrew packages, casks, and App Store apps |
 | `run_02-configure-duti.sh.tmpl` | every apply | Sets file type associations |
-| `run_onchange_03-krew-plugins.sh.tmpl` | on change | Installs kubectl krew plugins |
+| `run_onchange_03-krew.sh.tmpl` | on change | Installs kubectl krew plugins |
 
 ### SSH & Secrets
 
