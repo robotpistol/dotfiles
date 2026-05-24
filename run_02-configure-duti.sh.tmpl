@@ -1,0 +1,57 @@
+#!/bin/bash
+
+{{ if eq .chezmoi.os "darwin" -}}
+
+# duti uses bundle IDs and UTI types
+# Format: duti -s <bundle_id> <UTI/extension> <role>
+# Roles: all, viewer, editor, shell
+
+# Text/code files → VS Code
+duti -s com.microsoft.VSCode .txt editor 2>/dev/null || true
+duti -s com.microsoft.VSCode .md editor 2>/dev/null || true
+duti -s com.microsoft.VSCode .json editor 2>/dev/null || true
+duti -s com.microsoft.VSCode .yaml editor 2>/dev/null || true
+duti -s com.microsoft.VSCode .yml editor 2>/dev/null || true
+duti -s com.microsoft.VSCode .toml editor 2>/dev/null || true
+duti -s com.microsoft.VSCode .sh editor 2>/dev/null || true
+duti -s com.microsoft.VSCode .zsh editor 2>/dev/null || true
+duti -s com.microsoft.VSCode .py editor 2>/dev/null || true
+duti -s com.microsoft.VSCode .go editor 2>/dev/null || true
+duti -s com.microsoft.VSCode .rb editor 2>/dev/null || true
+duti -s com.microsoft.VSCode .rs editor 2>/dev/null || true
+duti -s com.microsoft.VSCode .lua editor 2>/dev/null || true
+duti -s com.microsoft.VSCode .ex editor 2>/dev/null || true
+duti -s com.microsoft.VSCode .exs editor 2>/dev/null || true
+duti -s com.microsoft.VSCode .csv editor 2>/dev/null || true
+duti -s com.microsoft.VSCode .xml editor 2>/dev/null || true
+duti -s com.microsoft.VSCode .conf editor 2>/dev/null || true
+duti -s com.microsoft.VSCode .cfg editor 2>/dev/null || true
+duti -s com.microsoft.VSCode .env editor 2>/dev/null || true
+duti -s com.microsoft.VSCode .log viewer 2>/dev/null || true
+duti -s com.microsoft.VSCode .css editor 2>/dev/null || true
+duti -s com.microsoft.VSCode .js editor 2>/dev/null || true
+duti -s com.microsoft.VSCode .ts editor 2>/dev/null || true
+duti -s com.microsoft.VSCode .jsx editor 2>/dev/null || true
+duti -s com.microsoft.VSCode .tsx editor 2>/dev/null || true
+duti -s com.microsoft.VSCode .sql editor 2>/dev/null || true
+duti -s com.microsoft.VSCode .graphql editor 2>/dev/null || true
+duti -s com.microsoft.VSCode .dockerfile editor 2>/dev/null || true
+duti -s com.microsoft.VSCode .tf editor 2>/dev/null || true
+duti -s com.microsoft.VSCode .hcl editor 2>/dev/null || true
+duti -s com.microsoft.VSCode .swift editor 2>/dev/null || true
+duti -s com.microsoft.VSCode .c editor 2>/dev/null || true
+duti -s com.microsoft.VSCode .h editor 2>/dev/null || true
+duti -s com.microsoft.VSCode .cpp editor 2>/dev/null || true
+duti -s com.microsoft.VSCode .makefile editor 2>/dev/null || true
+duti -s com.microsoft.VSCode .gitignore editor 2>/dev/null || true
+
+# Video → VLC
+duti -s org.videolan.vlc .mp4 viewer 2>/dev/null || true
+duti -s org.videolan.vlc .mkv viewer 2>/dev/null || true
+duti -s org.videolan.vlc .avi viewer 2>/dev/null || true
+duti -s org.videolan.vlc .mov viewer 2>/dev/null || true
+duti -s org.videolan.vlc .webm viewer 2>/dev/null || true
+duti -s org.videolan.vlc .m4v viewer 2>/dev/null || true
+duti -s org.videolan.vlc .flv viewer 2>/dev/null || true
+
+{{ end -}}
