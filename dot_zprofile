@@ -1,0 +1,5 @@
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+fpath=(~/.config/zsh/ "${fpath[@]}")
+autoload g
+

@@ -1,0 +1,92 @@
+# ============================================================
+# Taps
+# ============================================================
+
+# ============================================================
+# CLI Tools
+# ============================================================
+
+# Shell & terminal
+brew "atuin"
+brew "bat"
+brew "btop"
+brew "coreutils"
+brew "fish"
+brew "fisher"
+brew "fzf"
+brew "jless"
+brew "lazygit"
+brew "sd"
+brew "starship"
+brew "thefuck"
+brew "tmux"
+brew "vivid"
+brew "watch"
+brew "zoxide"
+brew "zsh-autocomplete"
+brew "zsh-autosuggestions"
+
+# Version control & GitHub
+brew "gh"
+brew "git"
+
+# Languages & runtimes
+brew "go"
+brew "lua-language-server"
+brew "node"
+brew "python@3.14"
+brew "rbenv"
+brew "ruby"
+brew "ruby-build"
+brew "uv"
+
+# DevOps & infra
+brew "cmake"
+brew "container"
+brew "kubernetes-cli"
+brew "kubectx"
+brew "krew"
+brew "pulumi"
+brew "tailscale"
+brew "terraform"
+
+# Data & databases
+brew "jq"
+brew "yq"
+brew "mysql"
+brew "sqlite"
+
+# Networking & HTTP
+brew "curl"
+brew "httpie"
+brew "ssh-copy-id"
+brew "telnet"
+brew "wget"
+
+# Media
+brew "ffmpeg"
+
+# Search
+brew "the_silver_searcher"
+
+# Misc
+brew "buf"
+brew "chezmoi"
+brew "duti"
+brew "gnupg"
+brew "gum"
+brew "mas"
+brew "ncdu"
+
+# ============================================================
+# Casks (GUI apps)
+# ============================================================
+cask "alfred"
+cask "claude"
+cask "container"
+cask "discord"
+cask "docker-desktop"
+cask "ghostty"
+cask "hammerspoon"
+cask "karabiner-elements"
+cask "vlc"
