@@ -1,7 +1,8 @@
 [user]
   name = Allen Kerr
   email = alkerr@gmail.com
-  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPSTPe8Hn4FIF5/i8/4+IcWn6bQ8gAMQWDp26FBeIHaj
+  signingkey = {{ onepasswordRead "op://Private/SSH Key/public key" }}
+
 
 [core]
   excludesfile = ~/.gitignore_global
