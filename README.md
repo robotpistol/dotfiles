@@ -5,23 +5,26 @@ Personal dotfiles managed with [chezmoi](https://www.chezmoi.io/).
 ## Fresh Mac Setup
 
 ```bash
-# Install Homebrew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-# Install chezmoi and apply dotfiles
-brew install chezmoi
-chezmoi init --apply https://github.com/USERNAME/dotfiles.git
+bash <(curl -s https://raw.githubusercontent.com/USERNAME/dotfiles/main/bootstrap.sh)
 ```
 
 This will:
 
-1. Install all packages and apps via Homebrew
-2. Set file associations (code files → VS Code, video → VLC) via duti
-3. Apply shell, git, Hammerspoon, and Karabiner configs
+1. Install Xcode CLI tools
+2. Install Homebrew
+3. Install 1Password (pauses for sign-in and SSH agent setup)
+4. Install chezmoi and apply all dotfiles
+
+When prompted, enter `personal` or `work` for machine type.
+
+### Post-setup manual steps
+
+- Grant Accessibility permissions for: Hammerspoon, Karabiner, Alfred, 1Password
+- Enter Alfred license key (stored in 1Password)
 
 ## How It Works
 
-chezmoi manages dotfiles from a source directory (`~/.local/share/chezmoi/`) and applies them to the home directory. Files are copied, not symlinked.
+chezmoi manages dotfiles from a source directory (`~/.local/share/chezmoi/`) and applies them to the home directory. Files are copied, not symlinked. Templates (`.tmpl` files) support conditionals for work vs personal machine differences.
 
 ### Managed Configs
 
@@ -29,8 +32,11 @@ chezmoi manages dotfiles from a source directory (`~/.local/share/chezmoi/`) and
 |---|---|
 | zsh | `dot_zshrc` |
 | git | `dot_gitconfig` |
+| SSH | `dot_ssh/` |
 | Hammerspoon | `dot_hammerspoon/` |
 | Karabiner | `dot_config/karabiner/` |
+| Ghostty | `dot_config/ghostty/` |
+| Starship | `dot_config/starship.toml` |
 | Brewfile | `dot_Brewfile` |
 
 ### Run Scripts
@@ -39,8 +45,25 @@ Scripts run in alphabetical order after attribute prefixes are stripped.
 
 | Script | Type | Purpose |
 |---|---|---|
-| `run_onchange_01-brew-bundle.sh.tmpl` | on change | Installs Homebrew packages and casks |
+| `run_onchange_00-xcode-cli.sh.tmpl` | on change | Installs Xcode CLI tools |
+| `run_onchange_01-brew-bundle.sh.tmpl` | on change | Installs Homebrew packages, casks, and App Store apps |
 | `run_02-configure-duti.sh.tmpl` | every apply | Sets file type associations |
+| `run_onchange_03-krew-plugins.sh.tmpl` | on change | Installs kubectl krew plugins |
+
+### SSH & Secrets
+
+SSH keys are managed through the 1Password SSH agent. No private keys are stored on disk or in this repo. The SSH config points at the 1Password agent socket:
+
+```
+Host *
+    IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+```
+
+Keys sync via 1Password's cloud. The SSH agent toggle is per-device and must be enabled manually during setup.
+
+### Work vs Personal
+
+Machine type is set during `chezmoi init` and stored in `~/.config/chezmoi/chezmoi.toml`. Templates use `{{ .machine_type }}` to conditionally apply configs (git email, brew packages, etc.).
 
 ## Day-to-Day Usage
 
