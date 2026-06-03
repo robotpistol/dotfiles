@@ -54,6 +54,15 @@
                             "to": [{ "key_code": "right_command" }]
                         }
                     ]
+                },
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": true,
+                        "product_id": 2800,
+                        "vendor_id": 13364
+                    },
+                    "ignore": false
                 }
             ],
             "name": "Default profile",
