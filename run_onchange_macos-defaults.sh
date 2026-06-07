@@ -10,7 +10,9 @@ defaults write NSGlobalDomain com.apple.sound.uiaudio.enabled -int 0
 # ── Keyboard ───────────────────────────────────────────────────────────────
 defaults write NSGlobalDomain KeyRepeat -int 2
 defaults write NSGlobalDomain InitialKeyRepeat -int 15
-defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+defaults write com.mitchellh.ghostty ApplePressAndHoldEnabled -bool false
+defaults write com.googlecode.iterm2 ApplePressAndHoldEnabled -bool false
+defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
 
 # ── Dock ───────────────────────────────────────────────────────────────────
 defaults write com.apple.dock autohide -bool true
