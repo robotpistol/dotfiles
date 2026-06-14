@@ -1,6 +1,7 @@
 packages:
   brews:
     - atuin
+    - awscli
     - bat
     - btop
     - buf
@@ -14,12 +15,14 @@ packages:
     - fzf
     - gh
     - git
+    - git-lfs
     - gnupg
     - go
     - gum
     - httpie
     - jless
     - jq
+    - just
     - krew
     - kubernetes-cli
     - kubectx
@@ -37,6 +40,7 @@ packages:
     - ssh-copy-id
     - starship
     - telnet
+    - terraform
     - the_silver_searcher
     - thefuck
     - tmux
@@ -70,6 +74,10 @@ packages:
     - { name: "Tailscale", id: 1475387142 }    # already have CLI in brew too
 
   work:
+    brews:
+      - common-fate/granted/granted
+    casks:
+      - aws-vpn-client
     mas:
       - { name: "Slack", id: 803453959 }
 

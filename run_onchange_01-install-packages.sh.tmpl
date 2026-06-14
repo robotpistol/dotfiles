@@ -17,6 +17,13 @@ cask {{ . | quote }}
 mas {{ .name | quote }}, id: {{ .id }}
 {{ end -}}
 {{ if eq .machine_type "work" -}}
+tap "common-fate/granted"
+{{ range .packages.work.brews -}}
+brew {{ . | quote }}
+{{ end -}}
+{{ range .packages.work.casks -}}
+cask {{ . | quote }}
+{{ end -}}
 {{ range .packages.work.mas -}}
 mas {{ .name | quote }}, id: {{ .id }}
 {{ end -}}
@@ -27,4 +34,9 @@ mas {{ .name | quote }}, id: {{ .id }}
 {{ end -}}
 {{ end -}}
 EOF
+
+if ! command -v mise &>/dev/null; then
+  echo "Installing mise..."
+  curl https://mise.run | sh
+fi
 {{ end -}}

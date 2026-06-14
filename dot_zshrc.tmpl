@@ -63,3 +63,9 @@ eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
 eval "$(mise activate zsh)"
 eval "$(atuin init zsh)"
+{{ if eq .machine_type "work" -}}
+
+# granted — alias required so assume runs in current shell and exports credentials
+alias assume="source assume"
+eval "$(granted completion zsh)"
+{{ end -}}
