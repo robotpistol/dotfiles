@@ -6,6 +6,7 @@ if ! command -v brew &>/dev/null; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
+
 brew bundle --file=/dev/stdin <<EOF
 {{ range .packages.brews -}}
 brew {{ . | quote }}
@@ -17,7 +18,8 @@ cask {{ . | quote }}
 mas {{ .name | quote }}, id: {{ .id }}
 {{ end -}}
 {{ if eq .machine_type "work" -}}
-tap "common-fate/granted"
+tap "common-fate/granted", trusted: true
+tap "hashicorp/tap", trusted: true
 {{ range .packages.work.brews -}}
 brew {{ . | quote }}
 {{ end -}}

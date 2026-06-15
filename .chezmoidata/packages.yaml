@@ -7,7 +7,7 @@ packages:
     - buf
     - chezmoi
     - cmake
-    - container
+    # - container
     - coreutils
     - curl
     - duti
@@ -57,6 +57,7 @@ packages:
     - 1password
     - 1password-cli
     - alfred
+    - arc
     - claude
     - container
     - discord
@@ -69,7 +70,7 @@ packages:
 
   mas:
     - { name: "Amphetamine", id: 937984704 }   # keep awake
-    - { name: "Clocks", id: 414554506 }
+    # - { name: "Clocks", id: 414554506 }
     - { name: "Hidden Bar", id: 1452453066 }   # menu bar cleanup
     - { name: "Tailscale", id: 1475387142 }    # already have CLI in brew too
 

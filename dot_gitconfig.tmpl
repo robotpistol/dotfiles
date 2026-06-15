@@ -5,7 +5,7 @@
   {{ else -}}
       email = alkerr@gmail.com
   {{ end -}}
-  signingkey = {{ onepasswordRead "op://Private/SSH Key/public key" }}
+  signingkey = {{ onepasswordRead "op://Private/SSH Key/public key" "my.1password.com" }}
 
 [core]
   excludesfile = ~/.gitignore_global
@@ -16,6 +16,7 @@
 [push]
   default = current
   autoSetupRemote = true
+  
 [alias]
   unstage = reset HEAD --
   uncommit = reset --soft HEAD~
@@ -66,8 +67,8 @@
 	required = true
 [init]
 	defaultBranch = main
-#[url "git@github.com:"]
-#	insteadOf = https://github.com/
+[url "git@github.com:"]
+	insteadOf = https://github.com/
 [giteup]
 	base-path = /Users/allen_kerr/src
 	github-user = robotpistol

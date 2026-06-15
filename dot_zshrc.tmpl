@@ -30,6 +30,15 @@ source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 config_zsh=~/.config/zsh
 fpath=($config_zsh/functions $config_zsh/completions $fpath)
 autoload -U $config_zsh/functions/*(N:t)
+{{ if eq .machine_type "work" -}}
+
+# granted/assume completions — `granted completion -s zsh` writes files here,
+# it does not emit eval-able output. Generate once, then add to fpath before compinit.
+if [[ ! -f ~/.granted/zsh_autocomplete/granted/_granted ]]; then
+  granted completion -s zsh >/dev/null 2>&1
+fi
+fpath=(~/.granted/zsh_autocomplete/granted ~/.granted/zsh_autocomplete/assume $fpath)
+{{ end -}}
 
 # Initialize completion
 autoload -U compinit; compinit
@@ -67,5 +76,4 @@ eval "$(atuin init zsh)"
 
 # granted — alias required so assume runs in current shell and exports credentials
 alias assume="source assume"
-eval "$(granted completion zsh)"
 {{ end -}}
