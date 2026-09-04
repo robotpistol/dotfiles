@@ -18,6 +18,10 @@ defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
 defaults write com.apple.dock autohide -bool true
 defaults write com.apple.dock tilesize -int 62
 defaults write com.apple.dock show-recents -bool false
+defaults write com.apple.dock persistent-apps -array
+defaults write com.apple.dock persistent-others -array \
+  "{tile-data={arrangement=1; displayas=1; file-data={_CFURLString=\"file://$HOME/Downloads\"; _CFURLStringType=15;};}; tile-type=\"directory-tile\";}" \
+  "{tile-data={arrangement=1; displayas=1; file-data={_CFURLString=\"file://$HOME/Documents\"; _CFURLStringType=15;};}; tile-type=\"directory-tile\";}"
 defaults write com.apple.dock autohide-delay -float 0
 defaults write com.apple.dock autohide-time-modifier -float 0.15
 killall Dock

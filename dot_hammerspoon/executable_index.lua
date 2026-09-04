@@ -11,7 +11,6 @@ Hyper(hyper, {
   {key = "C", message = 'Edit Config', fn = EditConfig},
   {key = "R", message = 'Reload Config', fn = hs.reload},
   {key = "Y", message = 'Toggle Console', fn = hs.toggleConsole},
-  {key = "L", message = 'Lock Screen', fn = hs.caffeinate.lockScreen},
   {key = "return", fn = spoon.WindowHalfsAndThirds.maximize}, -- message = 'Maximize',
   {key = "left",   fn = spoon.WindowHalfsAndThirds.leftHalf}, -- message = 'Window Left Half',
   {key = "right",  fn = spoon.WindowHalfsAndThirds.rightHalf}, -- message = 'Window Right Half',
@@ -19,6 +18,7 @@ Hyper(hyper, {
   {key = "down",   fn = spoon.WindowHalfsAndThirds.bottomHalf}, -- message = 'Window Bottom Half',
   {key = "J", fn = OpenSelectedJiraTicket},
   {key = "S", fn = JiraSelector},
+  {key = "`", message = 'Lock Screen', fn = hs.caffeinate.lockScreen},
   {key = "Q", fn = function()
     hs.alert.show(hs.pasteboard.getContents())
   end},
@@ -32,6 +32,8 @@ Hyper(hyper, {
       {key = 'f', fn = FocusAppFn('Finder'), message = 'Finder'},
       {key = 'h', fn = FocusAppFn('Home'), message = 'Home'},
       {key = 'i', fn = FocusAppFn('claude.app'), message = 'Claude'},
+      {key = 'j', fn = FocusAppFn('Linear'), message = 'Linear'},
+      {key = 'l', fn = FocusAppFn('Linear'), message = 'Linear'},
       {key = 'm', fn = FocusAppFn('Messages'), message = 'Messages'},
       {key = 'n', fn = FocusAppFn('Notion'), message = 'Notion'},
       {key = 'p', fn = FocusAppFn('1Password'), message = '1Password'},
@@ -39,11 +41,11 @@ Hyper(hyper, {
       {key = 't', fn = FocusAppFn('Ghostty'), message = 'Ghostty'},
       {key = 'v', fn = FocusAppFn('com.apple.ActivityMonitor'), message = 'ActivityMonitor'},
       {key = 'y', fn = FocusAppFn('com.apple.systempreferences'), message = 'systempreferences'},
-      -- {key = 'y', fn = FocusAppFn('Spotify'), message = 'Spotify'},
-      {key = 'z', fn = FocusAppFn('Zoom.us'), message = 'Zoom'},
+      {key = 'w', fn = FocusAppFn('Weather'), message = 'Weather'},
+      -- {key = 'z', fn = FocusAppFn('Zoom.us'), message = 'Zoom'},
+      {key = 'z', fn = FocusAppFn('Zen'), message = 'Zen'},
     }
   }},
-
   {key = 'space', message = "System", modal = {
     name = "System",
     spec = {

@@ -49,3 +49,7 @@
 # resize-overlay-duration = 4s 200ms
 
 copy-on-select = clipboard
+font-feature = -calt
+bell-features = attention,title,no-audio,no-system,no-border
+
+scrollback-limit = 1000000000

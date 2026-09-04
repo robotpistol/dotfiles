@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+
+vpn() {
+  case "$1" in
+    staging|prod) ~/vpn/vpn-connect.sh "$1" ;;
+    *) echo "usage: vpn [staging|prod]" ;;
+  esac
+}

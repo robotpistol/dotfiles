@@ -1,1 +1,3 @@
+#!/usr/bin/env zsh
+
 git --no-pager branch --format='%(refname:short)' | sort | gum filter  --height=500 | xargs git checkout
